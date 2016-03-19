@@ -1,23 +1,33 @@
+import java.util.ArrayList;
+import java.util.Map;
+
 /**
  * Created by kraken on 18/03/16.
  */
 public class Calc {
-    public static void main(String[] args) {
-        String e="23*176+(13*83*9+1209/4)*3-(483/87*232)";
-        System.out.println(e);
-        System.out.println("Result: "+getDigit(e));
+   
+    static int count;
+    static ArrayList<String>  history;
 
+   static public double getResult(String s){
+       count=0;
+       history=new ArrayList<>();
+       history.add(s);
+       double result=getDigit(s);
+       String res="Result: "+pow(result);
+       history.add(res);
+       return  result;
     }
-    static int count=0;
 
-    static double getDigit(String s) {
+    private static double getDigit(String s) {
+       s=s.replaceAll(" ","");
         if (Utils.isDigit(s)) {
             double digit = Double.parseDouble(s);
             //System.out.println(digit);
             return digit;
         } else {
             Expr e = new Expr(s);
-            System.out.println(e);
+           // System.out.println(e);
             double left = getDigit(e.experssion.left);
             double right = getDigit(e.experssion.right);
 
@@ -47,10 +57,15 @@ public class Calc {
 
 
         }
-        System.out.println(count++ + ". " + +a + " " + b + " " + c + "=" + (int) res);
+
+        System.out.println(++count + ". " + +a + " " + b + " " + c + "=" + (int) res);
+        history.add(count + ". " +pow(a) + " " + b + " " + pow(c) + "=" + pow (res));
 
         return res;
 
+    }
+  static   double pow(double n){
+        return ((double)((int)(n*100)))/100;
     }
 
 

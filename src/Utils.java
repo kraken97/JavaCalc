@@ -4,6 +4,7 @@
 public class Utils {
     public static boolean isDigit(String s) {
         if (s == null || s.length() < 1) return false;
+        if (s.equals("."))return false;
         if (checkMinusAndDot(s)) {
             for (int i = 0; i < s.length(); i++) {
                 if (s.charAt(i) != '-' && s.charAt(i) != '.' && !Character.isDigit(s.charAt(i))) {
