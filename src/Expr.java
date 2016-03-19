@@ -72,8 +72,7 @@ public class Expr {
 
 
     static boolean isMark(char c, char mark) {
-        if (c == mark) return true;
-        return false;
+        returb c == mark
     }
 
 }
