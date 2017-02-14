@@ -23,11 +23,11 @@ public class Calc {
        s=s.replaceAll(" ","");
         if (Utils.isDigit(s)) {
             double digit = Double.parseDouble(s);
-            //System.out.println(digit);
+
             return digit;
         } else {
             Expr e = new Expr(s);
-           // System.out.println(e);
+
             double left = getDigit(e.experssion.left);
             double right = getDigit(e.experssion.right);
 
@@ -64,7 +64,8 @@ public class Calc {
         return res;
 
     }
-  static   double pow(double n){
+   
+    static double pow(double n){
         return ((double)((int)(n*100)))/100;
     }
 
